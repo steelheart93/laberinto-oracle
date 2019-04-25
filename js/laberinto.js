@@ -33,7 +33,7 @@ $(function () {
             X1 = document.getElementById("coordenada_x").value;
             Y1 = document.getElementById("coordenada_y").value;
             id_actual = `c(${X1},${Y1})`;
-            document.getElementById(id_actual).src = "img/rpg_maker/toro.png";
+            document.getElementById(id_actual).src = "includes/img/rpg_maker/toro.png";
         }
 
         // Reproducir audio precargado en  el index.html
@@ -56,7 +56,7 @@ $(function () {
             X2 = document.getElementById("coordenada_x").value;
             Y2 = document.getElementById("coordenada_y").value;
             var id = `c(${X2},${Y2})`;
-            document.getElementById(id).src = "img/rpg_maker/cerrada.png";
+            document.getElementById(id).src = "includes/img/rpg_maker/cerrada.png";
         }
 
         // Reproducir audio precargado en  el index.html
@@ -138,18 +138,18 @@ function consultar() {
                     if (id_actual == `c(${X2},${Y2})`) {
                         camino_finalizado = true;
                         document.getElementById("audio_salida").play();
-                        document.getElementById(id_actual).src = "img/rpg_maker/abierta.png";
+                        document.getElementById(id_actual).src = "includes/img/rpg_maker/abierta.png";
                     } else {
                         if (camino_finalizado) {
-                            document.getElementById(id_actual).src = "img/rpg_maker/espacio.png";
+                            document.getElementById(id_actual).src = "includes/img/rpg_maker/espacio.png";
                         } else {
-                            document.getElementById(id_actual).src = "img/rpg_maker/camino.png";
+                            document.getElementById(id_actual).src = "includes/img/rpg_maker/camino.png";
                             $("#camino").text($("#camino").text() + recorrido[contador] + " ");
                         }
                     }
 
                     id_actual = "c" + recorrido[contador];
-                    document.getElementById(id_actual).src = "img/rpg_maker/toro.png";
+                    document.getElementById(id_actual).src = "includes/img/rpg_maker/toro.png";
 
                     contador++;
                 } else {
@@ -207,10 +207,10 @@ function cargar_laberinto() {
             var img;
             if (x == 0 || x == ANCHO - 1 || y == 0 || y == ALTO - 1) {
                 // Los bordes de la tabla con espacios
-                img = `<img id='c(${x},${y})' src="img/rpg_maker/espacio.png">`;
+                img = `<img id='c(${x},${y})' src="includes/img/rpg_maker/espacio.png">`;
             } else {
                 // El resto de la tabla son paredes
-                img = `<img id='c(${x},${y})' src="img/rpg_maker/pared.png">`;
+                img = `<img id='c(${x},${y})' src="includes/img/rpg_maker/pared.png">`;
             }
 
             // Cada columna de cada fila guarda un botón que informa
