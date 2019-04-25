@@ -1,0 +1,44 @@
+body {
+    background-color: whitesmoke;
+    font-family: 'MedievalSharp', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#tabla {
+    margin: auto;
+}
+
+#tiempo {
+    width: 150px;
+}
+
+#ancho, #alto {
+    width: 100px;
+}
+
+#cargar, #instrucciones {
+    margin-left: 50px;
+}
+
+#coordenada_x, #coordenada_y {
+    width: 50px;
+}
+
+#camino {
+    background-color: black;
+    margin: auto;
+    width: 80%;
+    height: 50px;
+    overflow: auto;
+    color: whitesmoke;
+    white-space: nowrap;
+}
+
+#tabla button:hover {
+    cursor: crosshair;
+}
