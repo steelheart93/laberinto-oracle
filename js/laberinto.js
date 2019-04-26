@@ -84,6 +84,10 @@ $(function () {
         // Reproducir audio precargado en  el index.html
         document.getElementById("audio_procesar").play();
     });
+
+    $("#toggle").click(function () {
+        location.href = "http://localhost/laberinto_oracle/html/archivo.html";
+    });
 });
 
 // Dimensiones
