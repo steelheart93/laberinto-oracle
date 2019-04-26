@@ -9,7 +9,7 @@ if (!$conexion_bd) {
     echo 'Error en la conexión con Oracle: ' . $m['message'];
 }
 
-$query = "select paquete_laberinto.laberinto_archivo($NOMBRE) as RESULTADO from dual";
+$query = "select paquete_laberinto.laberinto_archivo('$NOMBRE') as RESULTADO from dual";
 $statement = oci_parse($conexion_bd, $query);
 
 if (!$statement) {

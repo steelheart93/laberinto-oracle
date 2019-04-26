@@ -9,9 +9,10 @@ $(function () {
     var final = false;
 
     $("#cargar").click(function () {
-        ANCHO = document.getElementById("ancho").value;
-        ALTO = document.getElementById("alto").value;
-        cargar_laberinto();
+        NOMBRE = document.getElementById("nombre").value;
+        //cargar_laberinto();
+
+        consultar();
 
         // Reproducir audio precargado en  el index.html
         document.getElementById("audio_cargar").play();
@@ -40,59 +41,13 @@ $(function () {
         document.getElementById("audio_iniciar").play();
     });
 
-    $("#coordenada_final").click(function () {
-        if (final) {
-            // Se deben reiniciar las condiciones
-            inicial = false;
-            final = false;
-
-            // Si ya se cargo una coordenada final vuelvo
-            // a comenzar con las mismas dimensiones
-            cargar_laberinto();
-            // y cargo la nueva coordenada
-            this.click();
-        } else {
-            final = true;
-            X2 = document.getElementById("coordenada_x").value;
-            Y2 = document.getElementById("coordenada_y").value;
-            var id = `c(${X2},${Y2})`;
-            document.getElementById(id).src = "includes/img/rpg_maker/cerrada.png";
-        }
-
-        // Reproducir audio precargado en  el index.html
-        document.getElementById("audio_finalizar").play();
-    });
-
-    $("#instrucciones").click(function () {
-        var url = "http://localhost/laberinto_oracle/html/instrucciones.html";
-        var atributos = "width=800,height=500,left=160,top=30";
-        open(url, "", atributos);
-
-        // Reproducir audio precargado en  el index.html
-        document.getElementById("audio_instrucciones").play();
-    });
-
-    $("#historia").click(function () {
-        var url = "http://localhost/laberinto_oracle/html/historia.html";
-        var atributos = "width=800,height=500,left=160,top=30";
-        open(url, "", atributos);
-    });
-
-    $("#procesar").click(function () {
-        consultar();
-
-        // Reproducir audio precargado en  el index.html
-        document.getElementById("audio_procesar").play();
-    });
-
     $("#toggle").click(function () {
         location.href = "http://localhost/laberinto_oracle/index.html";
     });
 });
 
 // Dimensiones
-var ANCHO = 0;
-var ALTO = 0;
+var NOMBRE = "";
 
 // Coordenada inicial
 var X1 = 0;
@@ -109,25 +64,25 @@ var id_actual = "c(0,0)";
 var camino_finalizado = false;
 
 function consultar() {
-    var consultaJSON = { "ANCHO": ANCHO, "ALTO": ALTO, "X1": X1, "Y1": Y1, "X2": X2, "Y2": Y2 };
+    var consultaJSON = { "NOMBRE": NOMBRE };
     // alert(JSON.stringify(consultaJSON));
 
-    var promesa = $.get("php/laberinto.php", consultaJSON);
+    var promesa = $.get("../php/archivo.php", consultaJSON);
 
     promesa.done(function (respuesta) {
         console.log(respuesta);
         var respuestaJSON = JSON.parse(respuesta);
         console.log(respuestaJSON);
 
-        // Muestro el tiempo de ejecución de la función
-        document.getElementById("tiempo").value = respuestaJSON["TIEMPO_ms"] + "  milisegundos";
-
         // Si no hay errores, comienzo el recorrido
         if (respuestaJSON["ERRORES"] == "SI") {
             alert("¡Se encontraron Errores!");
             // Muestro el mensaje de error de la BD
-            $("#camino").text(respuestaJSON["MENSAJE"]);
+            console.log(respuestaJSON["MENSAJE"]);
         } else {
+            console.log(respuestaJSON["MENSAJE"]);
+
+            /*
             var re = /\(\d+,\d+\)/g;
             var str = respuestaJSON["RECORRIDO"];
             var recorrido = str.match(re);
@@ -136,6 +91,9 @@ function consultar() {
 
             var contador = 0;
             $("#camino").html("CAMINO: &nbsp;");
+            */
+
+            /*
             var intervalId = setInterval(function () {
                 // Detengo el procesamiento del recorrido
                 if (contador < recorrido.length) {
@@ -163,6 +121,7 @@ function consultar() {
                     $("#camino").html($("#camino").html() + cadena_recorrido);
                 }
             }, 1000);
+            */
         }
     });
 
