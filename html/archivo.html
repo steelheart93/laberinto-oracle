@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laberinto con Conexión a Oracle</title>
-    <link rel="icon" href="img/rpg_maker/toro.png" type="image/png">
+    <link rel="icon" href="../includes/img/rpg_maker/toro.png" type="image/png">
     <link href='https://fonts.googleapis.com/css?family=MedievalSharp' rel='stylesheet'>
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <link rel="stylesheet" href="../css/laberinto.css">
     <script src="../js/jquery.js"></script>
-    <script src="js/laberinto.js"></script>
+    <script src="../js/archivo.js"></script>
 </head>
 
 <body>
@@ -20,8 +20,7 @@
         <h1>Laberinto de Creta</h1>
 
         <br>
-        <span>Ancho: &nbsp;</span><input type="number" id="ancho" value="0" min="0">
-        <span>Alto: &nbsp;</span><input type="number" id="alto" value="0" min="0">
+        <span>Nombre de Archivo: &nbsp;</span><input type="text" id="archivo" value="laberinto.csv">
         <button class="btn" id="cargar">CARGAR LABERINTO</button>
         <br><br>
 
@@ -31,45 +30,22 @@
         <input type="number" id="coordenada_y" value="0" disabled>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <button class="btn" id="coordenada_inicial">INICIAL</button>
-        &nbsp;&nbsp;
-        <button class="btn" id="coordenada_final">FINAL</button>
 
         <br><br><br>
         <table id="tabla">
             <tr>
-                <td><img src="img/mc_escher.jpg" alt=""></td>
+                <td><img src="../includes/img/mc_escher.jpg" alt=""></td>
             </tr>
         </table>
-
-        <br><br>
-        <span>Tiempo de Ejecución: &nbsp;</span>
-        <input type="text" id="tiempo" value="0  milisegundos" disabled>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="btn" id="procesar">PROCESAR</button>
-        &nbsp;&nbsp;
-        <button class="btn-secondary" id="instrucciones">INSTRUCCIONES</button>
-        &nbsp;&nbsp;
-        <button class="btn-secondary" id="historia">HISTORIA</button>
-        <br><br>
-
-        <p id="camino">
-            AQUÍ APARECE EL CAMINO PROCESADO &nbsp;-&nbsp;
-            Copyright (c) 2019 Stiven Muñoz Murillo, All Rights Reserved.
-        </p>
-        <br><br><br><br>
     </div>
     <label class="switch">
         <input id="toggle" type="checkbox" checked>
         <span class="slider round"></span>
     </label>
     <div>
-        <audio id="audio_cargar" src="mp3/cargar.mp3"></audio>
-        <audio id="audio_seleccionar" src="mp3/seleccionar.mp3"></audio>
-        <audio id="audio_iniciar" src="mp3/iniciar.mp3"></audio>
-        <audio id="audio_finalizar" src="mp3/finalizar.mp3"></audio>
-        <audio id="audio_procesar" src="mp3/procesar.mp3"></audio>
-        <audio id="audio_salida" src="mp3/salida_encontrada.mp3"></audio>
-        <audio id="audio_instrucciones" src="mp3/instrucciones.mp3"></audio>
+        <audio id="audio_cargar" src="../includes/mp3/cargar.mp3"></audio>
+        <audio id="audio_seleccionar" src="../includes/mp3/seleccionar.mp3"></audio>
+        <audio id="audio_iniciar" src="../includes/mp3/iniciar.mp3"></audio>
     </div>
 </body>
 
